@@ -1,4 +1,5 @@
 export type PostComment = {
     id: number
-    text: string
+    postId: number
+    body: string
 }
