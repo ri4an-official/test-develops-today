@@ -22,10 +22,10 @@ export const Template = ({ children, title }: { children: any; title?: string })
         <Head>
             <title>{title}</title>
         </Head>
-        <Link href='/'>
+        <Link href='/' passHref>
             <A>Main</A>
         </Link>
-        <Link href='/new'>
+        <Link href='/new' passHref>
             <A>New post</A>
         </Link>
         <main>{children}</main>

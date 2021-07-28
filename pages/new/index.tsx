@@ -27,7 +27,7 @@ export const Button = styled.button`
     border-radius: 0.5rem;
 `
 
-export default () => {
+export default function CreatePost() {
     const inputTitle = useInput()
     const inputBody = useInput()
     const router = useRouter()

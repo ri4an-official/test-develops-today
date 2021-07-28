@@ -10,7 +10,7 @@ import { addComment, getPost } from '../../models/api/posts'
 import { Post } from '../../models/types/Post'
 import { Button, InputGroup } from '../new'
 
-export default () => {
+export default function SelectedPost() {
     const id = +(useRouter().query.id ?? 1)
     const [post, setPost] = useState({} as Post)
     const input = useInput('')

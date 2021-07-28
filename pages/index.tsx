@@ -18,7 +18,7 @@ const PostTitle = styled(PostStyled)`
     }
     font-size: 20px;
 `
-export default () => {
+export default function Posts() {
     const { posts, loading } = useSelector((state: State) => state.postsReducer)
     const dispatch = useDispatch()
     useAsyncEffect(() => dispatch(getPostsAsync()), [])
@@ -26,7 +26,7 @@ export default () => {
         posts.map((p) => (
             <Fragment key={p.id}>
                 <a>
-                    <Link href={`/posts/${p.id}`}>
+                    <Link href={`/posts/${p.id}`} passHref>
                         <PostTitle>{p.title}</PostTitle>
                     </Link>
                 </a>
