@@ -1,25 +1,33 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import styled from 'styled-components'
 
-export const Template = ({ children, title }: { children: any; title: string }) => (
-    <>
+export const A = styled.a`
+    color: black;
+    &:hover {
+        color: blue !important;
+        cursor: pointer !important;
+    }
+    text-decoration: none;
+`
+const Styled = styled.div`
+    *:not(hr) {
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 10px;
+        margin: 5px;
+    }
+`
+export const Template = ({ children, title }: { children: any; title?: string }) => (
+    <Styled>
         <Head>
             <title>{title}</title>
         </Head>
-        <div className='links'>
-            <Link href='/'>
-                <a>Main</a>
-            </Link>
-            <Link href='/posts'>
-                <a>Posts</a>
-            </Link>
-            <Link href='/newpost'>
-                <a>New post</a>
-            </Link>
-        </div>
-        <div className='content'>
-            <h1>{title}</h1>
-            {children}
-        </div>
-    </>
+        <Link href='/'>
+            <A>Main</A>
+        </Link>
+        <Link href='/new'>
+            <A>New post</A>
+        </Link>
+        <main>{children}</main>
+    </Styled>
 )
