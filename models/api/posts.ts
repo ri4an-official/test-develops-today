@@ -1,13 +1,14 @@
 import axios from 'axios'
 import { Post } from '../types/Post'
-import { PostComment } from '../types/PostComment'
 
 const posts = axios.create({ baseURL: 'https://simple-blog-api.crew.red' })
 
-export const getPosts = async () => (await posts.get('/posts')).data as Post[]
-export const getComments = async (postId: number) =>
+export const getPosts = async () =>
+    ((await posts.get('/posts')).data as Post[]).filter((p) => p.title).reverse()
+
+export const getPost = async (postId: number) =>
     (await posts.get(`/posts/${postId}`, { params: { _embed: 'comments' } }))
-        .data as PostComment[]
+        .data as Post
 
 export const createPost = async (title: string, body: string) =>
     await posts.post('/posts', { title, body })
